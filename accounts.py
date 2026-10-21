@@ -58,6 +58,14 @@ def valid_data(data):
         return False
     if len(data['logs']) > 50000 or len(data['checkins']) > 10000:
         return False
+    settings = data.get('settings', {})
+    if not isinstance(settings, dict) or not isinstance(settings.get('calorieGoals', []), list):
+        return False
+    seen = set()
+    for goal in settings.get('calorieGoals', []):
+        if not isinstance(goal, dict) or not isinstance(goal.get('day'), str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', goal['day']) or type(goal.get('calories')) is not int or not 1 <= goal['calories'] <= 20000 or goal['day'] in seen:
+            return False
+        seen.add(goal['day'])
     for entry in data['logs']:
         if not isinstance(entry, dict) or entry.get('type') not in ('food', 'lift') or not isinstance(entry.get('name'), str) or not isinstance(entry.get('id'), str) or not isinstance(entry.get('day'), str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', entry['day']):
             return False

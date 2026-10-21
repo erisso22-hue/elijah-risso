@@ -55,3 +55,13 @@ Browser checks also exercised individual-set entry, edits, persistence, progress
 ## Visual progress
 
 The progress panel includes interactive heaviest-set/estimated-1RM and working-volume line charts, selectable 30-day/90-day/all-time history, and an eight-week training-consistency chart. Each point can be tapped, hovered, or focused with a keyboard to read its date and value. Charts share the kg/lb selector and exclude warm-ups. Weekly consistency counts distinct dates with working sets across all exercises; its current week is partial. Missing estimated maxes are not plotted as zero. Single-session and empty histories show explicit guidance. Muscle readiness also has labeled horizontal bars; unknown muscles have no filled score.
+
+## Calories, goals, and weekly recaps
+
+The nutrition dashboard shows 7/30/90-day calorie bars and a dashed daily-goal line. Complete food days are green, partial logs amber, and missing days gray markers. Tap or focus a day for details. No default calorie target is prescribed: enter your own goal and save it. Goals take effect on the selected day; later changes preserve earlier targets.
+
+Mark a day complete only after logging all its food. Adding/deleting food automatically reopens that day as partial. Training check-ins preserve the food completion flag. Calorie goals and completion flags sync with signed-in accounts and are included in JSON export; device-only users retain them in browser storage.
+
+Weekly recaps are calculated inside the app without AI. They include completed/logged/missing-day coverage, completed-day calorie averages, totals against the goals active on those completed dates, and near/below/above-goal day counts. “Near” means within ±5%; below goal is not automatically counted as success. Missing, partial, and not-yet-goaled days are excluded from goal adherence. Future dates are excluded from recap calculations. Select previous/next week to browse recaps.
+
+Training totals compare matching weekdays of adjacent weeks. Each exercise also compares its best estimated 1RM this week with the prior full week. A partial-week label and explanation accompany that comparison; one flat/lower week is not labeled a plateau. Exercise calories are not guessed or deducted from food. Recaps appear in the app; email/push delivery is not implemented.
