@@ -46,8 +46,12 @@ The ignored `.data/accounts.sqlite3` holds account data. Preserve it on persiste
 ## Validation
 
 ```sh
-node --test tests/training.test.js
+node --test tests/*.test.js
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
 Browser checks also exercised individual-set entry, edits, persistence, progress, pain check-ins, mobile layout, food search, and account registration/login/sync/conflict handling.
+
+## Visual progress
+
+The progress panel includes interactive heaviest-set/estimated-1RM and working-volume line charts, selectable 30-day/90-day/all-time history, and an eight-week training-consistency chart. Each point can be tapped, hovered, or focused with a keyboard to read its date and value. Charts share the kg/lb selector and exclude warm-ups. Weekly consistency counts distinct dates with working sets across all exercises; its current week is partial. Missing estimated maxes are not plotted as zero. Single-session and empty histories show explicit guidance. Muscle readiness also has labeled horizontal bars; unknown muscles have no filled score.

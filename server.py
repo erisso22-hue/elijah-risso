@@ -51,7 +51,7 @@ class Handler(SimpleHTTPRequestHandler):
             matches = [food for food in FOODS if all(term in food['name'].casefold() for term in query.split())]
             self.reply(200, {'foods': matches[:30], 'basis': 'per 100 grams', 'source': 'Starter reference catalog. Approximate values; check package labels for your food.'})
             return
-        if self.path.split('?')[0] not in ('/', '/index.html', '/favicon.ico', '/training.js', '/training-ui.js', '/accounts-ui.js'):
+        if self.path.split('?')[0] not in ('/', '/index.html', '/favicon.ico', '/training.js', '/training-ui.js', '/accounts-ui.js', '/charts.js'):
             self.send_error(404)
             return
         super().do_GET()
