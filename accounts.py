@@ -8,6 +8,7 @@ import secrets
 import sqlite3
 import threading
 import time
+import supabase_accounts
 from pathlib import Path
 from http.cookies import SimpleCookie
 
@@ -73,6 +74,8 @@ def valid_data(data):
 
 
 def handle(handler, path):
+    if supabase_accounts.configured():
+        return supabase_accounts.handle(handler, path, valid_data)
     if path not in ('/api/session', '/api/register', '/api/login', '/api/logout', '/api/data'):
         return False
     if handler.command == 'POST':

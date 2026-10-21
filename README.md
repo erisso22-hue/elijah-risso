@@ -37,6 +37,10 @@ This is a transparent workload heuristic, not a measured recovery score. Each wo
 
 Daily check-ins record overall fatigue and muscle-specific soreness/pain. Future lifts are excluded. A muscle with no training in the last seven days and no symptoms shows “No recent data”, rather than an unsupported readiness claim. Older custom lifts need muscle mappings before they contribute.
 
+## Accounts and storage
+
+For free persistent cloud storage, follow [Supabase setup](SUPABASE-SETUP.md). With SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY configured, the app uses Supabase Auth and its per-user database table. Without either setting, the SQLite development backend below remains available.
+
 ## Development accounts
 
 Accounts use salted scrypt password hashes, hashed session tokens, HttpOnly/SameSite cookies, per-user SQLite data, and revision checks to reject stale overwrites. Sessions last 30 days. Sign-in attempts are limited in memory. Cross-device behavior was tested using two isolated browser contexts connected to the same development server; remote phone access and deployment have not been configured.
